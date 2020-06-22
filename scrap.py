@@ -51,6 +51,7 @@ async def on_message(message):
         return
     
     else:
+  
         if(message.content[0:5]==">game"):
             try:
             
@@ -75,15 +76,58 @@ async def on_message(message):
                 embed.add_field(name="Compatibility:",value=compatibility[message.content[6:].lower()])
                 embed.add_field(name="Last Time Updated:",value=last_date[message.content[6:].lower()])
                 await message.channel.send(embed=embed)
+            
             except:
-                embed=discord.Embed(
+                isUsed=0
+                for i in raw_name:
+                    
+                    if message.content.lower()[6:] in i:
+
+                        if(isUsed==1):
+                            isUsed=2
+                        elif(isUsed==0):
+                            game_name=i
+                            isUsed=1
+
+                if(isUsed==0):
+                            embed=discord.Embed(
+                                title="Compatibility",
+                                
+                              
+                            )
+                            embed.add_field(name="Error:",value="Could find game "+message.content[6:])
+                            await message.channel.send(embed=embed)
+                elif(isUsed==2):
+                            embed=discord.Embed(
+                                title="Compatibility",
+                                
+                                
+                                    )
+                            embed.add_field(name="Error:",value="There are multiple entries for the game"+message.content[6:])
+                            await message.channel.send(embed=embed)
+                else:
+                    coloure=0x808080
+                    i=game_name
+                    if(compatibility[i]==" Bad"):
+                        coloure=0xE9F71D
+                    elif(compatibility[i]==" Okay"):
+                        coloure=0x85FF5F
+                    elif(compatibility[i]==" Great"):
+                        coloure=0x00FF44
+                    elif(compatibility[i]==" Intro/Menu"):
+                        coloure=0xFF3300
+                    elif(compatibility[i]==" Perfect"):
+                        coloure=0x006FFF
+                    embed=discord.Embed(
                         title="Compatibility",
-                        
-                        color=0x808080
-                )
-                embed.add_field(name="Error:",value="Could find game "+message.content[6:])
-                await message.channel.send(embed=embed)
-       
+                                
+                        color=coloure
+                    )
+                    embed.add_field(name="Game Name: ",value=raw_name[i])
+                    embed.add_field(name="Compatibility:",value=compatibility[i])
+                    embed.add_field(name="Last Time Updated:",value=last_date[i])
+                    await message.channel.send(embed=embed)
+
         elif(message.content[0:7]==">reload"):
             embed1=discord.Embed(
                     title="Reloading, please wait",
@@ -101,4 +145,4 @@ async def on_message(message):
 
 
 
-client.run("NzAzOTU3NTgzMzk2MDc3NjQ4.XqWtLw.aYLEpniCHP-Sykt8a01iX7Fmtp4")
+client.run("NzI0NjM1NzU4NzIzNDY1MjM2.XvDD7Q.r2r4JTGpxK0NYuCr_hffq61qoLA")
