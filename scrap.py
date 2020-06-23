@@ -75,6 +75,7 @@ async def on_message(message):
                 embed.add_field(name="Game Name: ",value=raw_name[message.content[6:].lower()])
                 embed.add_field(name="Compatibility:",value=compatibility[message.content[6:].lower()])
                 embed.add_field(name="Last Time Updated:",value=last_date[message.content[6:].lower()])
+                embed.add_field(name="More Infos:",value="https://yuzu-emu.org/game/"+message.content[6:].lower().replace(" ","-").replace(".",""))
                 await message.channel.send(embed=embed)
             
             except:
@@ -103,8 +104,9 @@ async def on_message(message):
                                 
                                 
                                     )
-                            embed.add_field(name="Error:",value="There are multiple entries for the game"+message.content[6:])
+                            embed.add_field(name="Error:",value="There are multiple entries for the game: "+message.content[6:])
                             await message.channel.send(embed=embed)
+                            #https://yuzu-emu.org/game/killallzombies/
                 else:
                     coloure=0x808080
                     i=game_name
@@ -126,6 +128,7 @@ async def on_message(message):
                     embed.add_field(name="Game Name: ",value=raw_name[i])
                     embed.add_field(name="Compatibility:",value=compatibility[i])
                     embed.add_field(name="Last Time Updated:",value=last_date[i])
+                    embed.add_field(name="More Infos:",value="https://yuzu-emu.org/game/"+i.lower().replace(" ","-").replace(".",""))
                     await message.channel.send(embed=embed)
 
         elif(message.content[0:7]==">reload"):
@@ -137,7 +140,6 @@ async def on_message(message):
             update()
             embed=discord.Embed(
                     title="Finished reloading list",
-          
             )
             embed.add_field(name="Game Count",value="Found "+str(len(compatibility))+" Games")
             await message.delete()
@@ -145,4 +147,4 @@ async def on_message(message):
 
 
 
-client.run("NzI0NjM1NzU4NzIzNDY1MjM2.XvDD7Q.r2r4JTGpxK0NYuCr_hffq61qoLA")
+client.run("NzI0NjM1NzU4NzIzNDY1MjM2.XvJWTg.heK0qQ1sBszXodm96_InU_4dASg")
