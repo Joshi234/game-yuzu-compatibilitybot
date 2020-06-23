@@ -147,4 +147,4 @@ async def on_message(message):
 
 
 
-client.run("NzI0NjM1NzU4NzIzNDY1MjM2.XvJWTg.heK0qQ1sBszXodm96_InU_4dASg")
+client.run("NzI0NjM1NzU4NzIzNDY1MjM2.XvJWTg.heK0qQ1sBszXodm96_InU_4dAS")
